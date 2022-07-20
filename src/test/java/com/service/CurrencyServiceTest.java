@@ -1,5 +1,6 @@
 package com.service;
 
+import currencyservice.api.service.CurrencyService;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
-package com.controller;
+package currencyservice.api.controller;
 
-import com.service.CurrencyService;
+import currencyservice.api.service.CurrencyService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping
-public class CurrencyServiceController {
+public class CurrencyController {
 
     @Autowired
     private CurrencyService currencyService;
@@ -26,5 +26,4 @@ public class CurrencyServiceController {
 
         return new ResponseEntity<>(exchangeRate, HttpStatus.OK);
     }
-    
 }
