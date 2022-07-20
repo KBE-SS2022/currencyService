@@ -1,12 +1,10 @@
-package com.service;
+package currencyservice.api.service;
 
 import org.json.JSONException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -42,11 +40,11 @@ public class CurrencyService {
 
         return jsonObject;
     }
+
     public Double getExchangeRate(String input) throws JSONException, IOException {
         String[] currencies = getCurrencies(input);
         JSONObject resultAsJSON = getAPIText(createURL(currencies[0], currencies[1]));
 
         return resultAsJSON.getDouble("result");
     }
-
 }
