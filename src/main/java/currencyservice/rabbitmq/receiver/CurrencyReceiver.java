@@ -1,8 +1,8 @@
 package currencyservice.rabbitmq.receiver;
 
-
 import com.rabbitmq.client.Channel;
 import currencyservice.api.controller.CurrencyController;
+import currencyservice.rabbitmq.MyAcknowledgement;
 import currencyservice.rabbitmq.config.Constant;
 import org.json.JSONException;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -21,7 +21,7 @@ public class CurrencyReceiver {
 
     @RabbitListener(queues = Constant.GET_CURRENCY_QUEUE)
     public Double getCurrency(@Payload String currencies, Channel channel) throws JSONException, IOException {
-        channel.basicAck(1L, true);
+        MyAcknowledgement.setAcknowledgement(channel, 1L, true);
         ResponseEntity<Double> entity;
         entity = currencyController.getExchangeRate(currencies);
         Double exchangeRate = entity.getBody();
