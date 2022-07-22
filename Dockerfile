@@ -20,4 +20,4 @@ COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
 ENTRYPOINT ["java","-cp","app:app/lib/*","currencyservice.CurrencyApplication"]
 
-EXPOSE 8082
+EXPOSE 9004
