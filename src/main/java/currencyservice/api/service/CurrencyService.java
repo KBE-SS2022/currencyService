@@ -43,7 +43,11 @@ public class CurrencyService {
 
     public Double getExchangeRate(String input) throws JSONException, IOException {
         String[] currencies = getCurrencies(input);
-        JSONObject resultAsJSON = getAPIText(createURL(currencies[0], currencies[1]));
+        String originalCurrency = currencies[0];
+        String newCurrency = currencies[1];
+        String completedURL = createURL(originalCurrency, newCurrency);
+
+        JSONObject resultAsJSON = getAPIText(completedURL);
 
         return resultAsJSON.getDouble("result");
     }
